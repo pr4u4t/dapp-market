@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
-import * as IPFS from 'ipfs-core'
+import { useState, useEffect } from 'react';
+import useIpfsFactory from './hooks/use-ipfs-factory.js'
+import useIpfs from './hooks/use-ipfs.js'
 import './App.css'
 import logo from '../logo.png'
 import Marketplace from '../abis/Marketplace.json'
 import Navbar from './Navbar'
 import Main from './Main'
+import Footer from './Footer'
 
 class App extends Component{
   async componentWillMount() {
@@ -26,7 +29,7 @@ class App extends Component{
   }
   
   async loadIPFS(){
-    window.ipfs = IPFS.create()
+    window.ipfs = await IPFS.create()
   }
   
   async loadBlockchainData() {
