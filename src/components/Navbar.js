@@ -4,15 +4,24 @@ class Navbar extends Component {
     
     render() {
         return (
-            <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="/" target="_blank" rel="noopener noreferrer">
-                Dapp University's Blockchain Marketplace
-                </a>
-                <ul className="navbar-nav px-3">
-                    <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-                        <small className="text-white"><span id="account">{this.props.account}</span></small>
-                    </li>
-                </ul>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="navbar">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">
+                        <img width="32px" height="32px" src="../logo192.png"/>
+                        <span>Distributed Marketplace</span>
+                    </a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                
+                    <div className="collapse navbar-collapse" id="navbar">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <a className="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         );
     }
