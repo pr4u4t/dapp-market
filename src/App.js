@@ -15,6 +15,11 @@ class App extends Component {
   async componentDidMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
+    //try{
+    //  this.node = await IPFS.create({repo: 'market'})
+    //}catch(e){
+    //  
+    //}
   }
   
   //create instance of web3.js
@@ -42,13 +47,11 @@ class App extends Component {
       this.setState({ marketplace })
       const productCount = await marketplace.methods.productsCount().call()
       this.setState({ productCount })
-  
-      const node = await IPFS.create()
     
       for (var i = 1; i <= productCount; i++) {
         const product = await marketplace.methods.products(i).call()
         
-        const stream = node.cat(product.photo)
+        /*const stream = this.node.cat(product.photo)
         const decoder = new TextDecoder()
         let data = ''
         
@@ -57,6 +60,8 @@ class App extends Component {
         }
         
         product.photo = data
+        */
+        console.log(product)
         
         this.setState({
           products: [...this.state.products, product]
@@ -83,18 +88,18 @@ class App extends Component {
   
   async createProduct(name, price, description, photo) {
     this.setState({ loading: true })
-    const node = await IPFS.create()
-    const results = node.add(photo)
+    //const results = this.node.add(photo)
     
-    for await (const { cid } of results) {
-      this.state.marketplace.methods.createProduct(name, price, description,cid.toString()).send({ from: this.state.account })
+    //for await (const { cid } of results) {
+      this.state.marketplace.methods.createProduct(name, price, description,'image').send({ from: this.state.account })
       .once('receipt', (receipt) => {
         this.setState({ loading: false })
       })
-    }
+    //}
   }
   
   purchaseProduct(id, price) {
+    console.log(price)
     this.setState({ loading: true })
     this.state.marketplace.methods.purchaseProduct(id).send({ from: this.state.account, value: price })
     .once('receipt', (receipt) => {

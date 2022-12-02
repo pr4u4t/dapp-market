@@ -30,3 +30,6 @@ presentation.nav
 presentation.out
 presentation.snm
 presentation.toc
+doc/paper.aux
+doc/paper.log
+doc/paper.out

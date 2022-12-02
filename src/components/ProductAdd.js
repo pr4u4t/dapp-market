@@ -19,11 +19,11 @@ class ProductAdd extends Component {
                                 const name = this.productName.value
                                 const price = window.web3.utils.toWei(this.productPrice.value.toString(), 'Ether')
                                 const description = this.productDescription.value
-                                var reader = new FileReader()
-                                reader.readAsDataURL(this.productPhoto.files[0])
-                                reader.addEventListener('load', (event) => {
-                                     this.props.createProduct(name, price,description,event.target.result);
-                                });
+                                //var reader = new FileReader()
+                                //reader.readAsDataURL(this.productPhoto.files[0])
+                                //reader.addEventListener('load', (event) => {
+                                     this.props.createProduct(name, price,description,/*event.target.result*/'img');
+                                //});
                             }} >
                                 <div className="modal-body">
                                     <div className="form-group mr-sm-2">
